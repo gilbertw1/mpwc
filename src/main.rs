@@ -21,7 +21,7 @@ fn main() {
   } else {
     let mut master_pass = String::new();
     std::io::stdin().read_to_string(&mut master_pass).expect("Failed to read master password from stdin.");
-    SecStr::from(master_pass)
+    SecStr::from(master_pass.trim())
   };
 
   let template = match config.pass_type.as_str() {
