@@ -1,5 +1,18 @@
 # mpwc
+
 Super duper simple Master Password CLI client
+
+### Installation
+
+Build
+
+    cargo build --release
+
+Run
+
+    ./target/release/mpwc
+
+### Usage
 
 ```
 mpwc 0.1.0
