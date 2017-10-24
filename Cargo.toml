@@ -7,5 +7,5 @@ authors = ["Bryan Gilbert <gilbertw1@gmail.com>"]
 rusterpassword = { git = "https://github.com/gilbertw1/rusterpassword" }
 secstr = "0.3.0"
 sodiumoxide = "0.0.15"
-clap = "2.26.2"
+clap = { git = "https://github.com/kbknapp/clap-rs.git" }
 rpassword = "2.0.0"

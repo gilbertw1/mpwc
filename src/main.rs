@@ -12,16 +12,16 @@ use secstr::*;
 use rusterpassword::*;
 
 fn main() {
-  let mut cli_app = cli::create_mpwc_cli_app();
+  let cli_app = cli::create_mpwc_cli_app();
   let matches = cli_app.clone().get_matches();
   let config = conf::create_config(&matches);
 
-  let master_pass = if config.prompt {
-    SecStr::from(rpassword::prompt_password_stdout("Master Password: ").unwrap())
-  } else {
+  let master_pass = if config.stdin {
     let mut master_pass = String::new();
     std::io::stdin().read_to_string(&mut master_pass).expect("Failed to read master password from stdin.");
     SecStr::from(master_pass.trim())
+  } else {
+    SecStr::from(rpassword::prompt_password_stdout("Master Password: ").unwrap())
   };
 
   let template = match config.pass_type.as_str() {
@@ -39,6 +39,8 @@ fn main() {
   let site_seed = gen_site_seed(&master_key, &config.site, config.counter).unwrap();
   let password = gen_site_password(&site_seed, template);
   let identicon = create_identicon(&master_pass, &config.name);
-  print!("[{}{}{}{}] ", identicon.left_arm, identicon.body, identicon.right_arm, identicon.accessory);
+  if !config.quiet {
+    print!("[{}{}{}{}] ", identicon.left_arm, identicon.body, identicon.right_arm, identicon.accessory);
+  }
   print!("{}", String::from_utf8_lossy(password.unsecure()));
 }
