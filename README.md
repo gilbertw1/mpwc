@@ -39,5 +39,6 @@ OPTIONS:
     -t, --type <TYPE>          Password type (max, long, medium, short, basic, pin), falls back to $MPW_SITETYPE
                                [env:MPW_SITETYPE]  [default: max]
 ARGS:
-    <SITE>    Site to generate password for```
+    <SITE>    Site to generate password for
+```
 
