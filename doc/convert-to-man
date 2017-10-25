@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pandoc -s -t man mpwc.1.md -o mpwc.1
+sed -i 's/\.TH.*/.TH "mpwc" "1"/g' mpwc.1

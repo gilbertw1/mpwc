@@ -3,7 +3,7 @@ use clap::ArgMatches;
 pub fn create_config(matches: &ArgMatches) -> MpwcConfig {
   MpwcConfig {
     stdin: matches.is_present("stdin"),
-    quiet: matches.is_present("quite"),
+    quiet: matches.is_present("quiet"),
     name: get_string_value(matches, "name").unwrap(),
     site: get_string_value(matches, "site").unwrap(),
     counter: get_int_value(matches, "counter").unwrap(),
